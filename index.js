@@ -26,7 +26,13 @@ app.listen(3000,()=>{
     console.log('server is running on port 3000');
 }
 );
-app.use(cors());
+const corsOptions = {
+    origin: 'https://urbannest-frontend.vercel.app', // Replace with your actual frontend URL
+    credentials: true, // To accept credentials like cookies
+  };
+  
+  app.use(cors(corsOptions));
+  
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/users",userRouter);
